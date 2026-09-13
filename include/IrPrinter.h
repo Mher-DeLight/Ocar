@@ -7,6 +7,7 @@ class IrPrinter {
 private:
     std::vector<std::unique_ptr<Ir>> ir;
     int indent = 0;
+    bool has_text_section = false;
     void print_indent(std::ostream& stream);
     void
     dispatch_print(Ir* instr,
