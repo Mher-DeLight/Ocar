@@ -73,6 +73,11 @@ void IrPrinter::instr_print(IrGlobal* ins, std::ostream& stream) {
 void IrPrinter::instr_print(IrSection* ins, std::ostream& stream) {
     indent = 0;
     stream << "section ." << ins->text;
+
+    if (ins->text == "text") {
+        has_text_section = true;
+    }
+
     indent++;
 }
 void IrPrinter::instr_print(IrAsm* ins, std::ostream& stream) {
@@ -140,6 +145,22 @@ void IrPrinter::print(std::ostream& stream) {
                "generated it.\n";
         stream << "; == generated via Ocar == https://www.github.com/Mher-DeLight/Ocar ==\n";
     }
+
+    has_text_section = false;
+    for (const auto& instr : ir) {
+        if (auto sec = dynamic_cast<IrSection*>(instr.get())) {
+            if (sec->text == "text") {
+                has_text_section = true;
+                break;
+            }
+        }
+    }
+
+    if (!has_text_section) {
+        stream << "section .text\n";
+        stream << "    global _start\n";
+    }
+
     for (auto& instr : ir) {
         dispatch_print(instr.get(), stream);
         stream << "\n";
