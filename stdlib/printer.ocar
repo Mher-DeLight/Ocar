@@ -17,7 +17,7 @@ rtn print_rax_decimal() {
 @    mov rax, rdx
 @stdlib_printer_print:
 @    test r12, r12
-@    jz stdlib_printer_exit
+@    jz stdlib_printer_all_done
 @    
 @    mov rax, 1
 @    mov rdi, 1
@@ -28,9 +28,5 @@ rtn print_rax_decimal() {
 @    pop rax
 @    dec r12
 @    jmp stdlib_printer_print
-@
-@stdlib_printer_exit:
-@    mov rax, 60
-@    mov rdi, 0
-@    syscall
+@stdlib_printer_all_done:
 }

@@ -48,8 +48,8 @@ static void printVersion() {
 }
 
 int main(int argc, char* argv[]) {
-    std::string read_from = "../code.scl";
-    std::string write_to = "../output.sh";
+    std::string read_from = "./main.ocar";
+    std::string write_to = "./out.asm";
 
     // --- Parse flags/arguments ---
     for (int i = 1; i < argc; ++i) {
