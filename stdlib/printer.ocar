@@ -1,0 +1,36 @@
+rtn print_rax_decimal() {
+@    ; extraction of digits
+@    mov r12, 0 ; amount of digits
+@    mov rbx, 10 ; base
+@    mov rdx, 0 ; zero out the upper half
+@stdlib_printer_extract:
+@    xor rdx, rdx
+@    div rbx
+@    
+@    add dl, '0'
+@    push rdx
+@    inc r12
+@
+@    test rax, rax
+@    jnz stdlib_printer_extract
+@stdlib_printer_done:
+@    mov rax, rdx
+@stdlib_printer_print:
+@    test r12, r12
+@    jz stdlib_printer_exit
+@    
+@    mov rax, 1
+@    mov rdi, 1
+@    mov rsi, rsp
+@    mov rdx, 1
+@    syscall
+@
+@    pop rax
+@    dec r12
+@    jmp stdlib_printer_print
+@
+@stdlib_printer_exit:
+@    mov rax, 60
+@    mov rdi, 0
+@    syscall
+}
