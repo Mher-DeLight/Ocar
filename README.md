@@ -56,7 +56,7 @@ rtn _start() noret {
 - [x] While loops
 - [ ] For loops
 - [ ] Add linking. Probably C-style, because it's easier.
-  - [ ] Make a standard library
+  - [x] Make a standard library
 - [x] `#noheader` option that removes the autogeneration header
 - [ ] Stack memory acces (e.g. `stk[bytecount] varname = 0;`, `stk[8] myint = 17;`)
 - [ ] Function parameters/arguments
@@ -64,4 +64,4 @@ rtn _start() noret {
 - [ ] `auto` keyword to automatically choose an unused register
 
 ## Name
-Ocar's name is a recursive acronym stnding for OCAR Can't Allocate Registers.
+Ocar's name is a recursive acronym standing for OCAR Can't Allocate Registers.
