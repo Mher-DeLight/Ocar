@@ -12,17 +12,22 @@ Technically, it _is_ indeed a compiler. However, because it doesn't provide many
 ```
 #stdlib entry
 #stdlib exit
+#stdlib printer
 
 rtn _start() noret {
-  rbx myVar1 = 3;
-  rcx myVar2 = 5;
-  myVar1 += myVar2;
+  rax myVar = 5;
+  print_rax_decimal();
 
-  @push rax
-  @pop rax
+  myVar = 10; // ascii code for newline character
+  print_rax_char();
 
-  delete myVar1;
-  delete myVar2;
+  myVar = 25;
+  print_rax_decimal();
+
+  myVar = 10; // ascii code for newlien character
+  print_rax_char();
+
+  delete myVar;
   exit();
 }
 ```
